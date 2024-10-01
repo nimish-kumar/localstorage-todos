@@ -1,0 +1,67 @@
+import { RiErrorWarningFill } from "react-icons/ri";
+
+function SignIn() {
+  // Accepts mail from subdomain also
+  const regex = /^[a-zA-Z0-9._%+-]+@([a-zA-Z0-9.-]+\.)*[a-zA-Z]{2,}$/;
+
+  const onSubmit = (event) => {
+    event.preventDefault();
+  };
+  return (
+    <div className="flex flex-col shadow-2xl py-10 px-10 w-1/3 rounded-xl font-geist-sans border border-gray">
+      <span className="font-bold text-2xl">Sign In</span>
+      <form
+        onSubmit={onSubmit}
+        className="flex flex-col gap-8 mt-8 justify-center items-center w-full"
+      >
+        <div className="flex flex-col gap-1 w-full">
+          <label
+            for="email"
+            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Email
+          </label>
+          <input
+            id="email"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Enter your email"
+          />
+          <div className="flex flex-row gap-2 items-center">
+            <RiErrorWarningFill className="text-lg text-red-600" />
+            <span className="text-red-500 text-sm">
+              Please enter valid email
+            </span>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-1 w-full">
+          <label
+            for="password"
+            class="block mb-1 text-sm font-medium text-gray-900 dark:text-white"
+          >
+            Password
+          </label>
+          <input
+            id="password"
+            type="password"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            placeholder="Enter your password"
+          />
+          <div className="flex flex-row gap-2 items-center">
+            <RiErrorWarningFill className="text-lg text-red-600" />
+            <span className="text-red-500 text-sm">Password incorrect</span>
+          </div>
+        </div>
+        <button
+          type="submit"
+          className="bg-orange-500 text-white h-10 w-1/2 rounded-md opacity-1 mt-4"
+          formNoValidate
+        >
+          Sign In
+        </button>
+      </form>
+    </div>
+  );
+}
+
+export default SignIn;
