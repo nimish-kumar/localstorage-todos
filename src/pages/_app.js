@@ -13,7 +13,6 @@ export const geistSans = localFont({
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
-  console.log("Route: ", router.route);
   useEffect(() => {
     const path = router.route;
     if (path === "/tasks" && !localStorage.getItem(CURRENT_ACTIVE_USER)) {

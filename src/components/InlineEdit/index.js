@@ -41,7 +41,7 @@ function InlineEdit({
         />
         <FaTrash
           onClick={() => onDelete && onDelete()}
-          className="text-3xl active:text-red-700"
+          className="text-3xl text-red-700 active:text-gray-500"
         />
       </div>
 
