@@ -1,3 +1,4 @@
+import ValidationErrorMsg from "@/components/ValidationErrorMsg";
 import {
   CREDENTIALS,
   CURRENT_ACTIVE_USER,
@@ -6,7 +7,6 @@ import {
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
-import { RiErrorWarningFill } from "react-icons/ri";
 
 function SignIn() {
   const {
@@ -41,7 +41,7 @@ function SignIn() {
   };
 
   return (
-    <div className="flex flex-col shadow-2xl py-10 px-10 w-1/3 rounded-xl font-geist-sans border border-gray">
+    <div className="flex flex-col self-center shadow-2xl py-10 px-10 w-1/3 rounded-xl font-geist-sans border border-gray">
       <span className="font-bold text-2xl">Sign In</span>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -67,12 +67,7 @@ function SignIn() {
             })}
           />
           {errors?.email?.message && (
-            <div className="flex flex-row gap-2 items-center">
-              <RiErrorWarningFill className="text-lg text-red-600" />
-              <span className="text-red-500 text-sm">
-                {errors?.email?.message}
-              </span>
-            </div>
+            <ValidationErrorMsg message={errors?.email?.message} />
           )}
         </div>
 
@@ -97,12 +92,7 @@ function SignIn() {
             })}
           />
           {errors?.password?.message && (
-            <div className="flex flex-row gap-2 items-center">
-              <RiErrorWarningFill className="text-lg text-red-600" />
-              <span className="text-red-500 text-sm">
-                {errors?.password?.message}
-              </span>
-            </div>
+            <ValidationErrorMsg message={errors?.password?.message} />
           )}
         </div>
         <button

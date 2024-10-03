@@ -1,9 +1,9 @@
+import ValidationErrorMsg from "@/components/ValidationErrorMsg";
 import { CREDENTIALS, emailRegex, NAME } from "@/utils/constants";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsCheckCircleFill } from "react-icons/bs";
-import { RiErrorWarningFill } from "react-icons/ri";
 
 function SignUp() {
   const {
@@ -55,7 +55,7 @@ function SignUp() {
   };
 
   return (
-    <div className="flex flex-col shadow-2xl py-10 px-10 w-1/3 rounded-xl font-geist-sans border border-gray">
+    <div className="flex flex-col self-center shadow-2xl py-10 px-10 w-1/3 rounded-xl font-geist-sans border border-gray">
       <span className="font-bold text-2xl">Sign Up</span>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -76,14 +76,7 @@ function SignUp() {
               required: "Name is a required field",
             })}
           />
-          {errors?.name?.message && (
-            <div className="flex flex-row gap-2 items-center">
-              <RiErrorWarningFill className="text-lg text-red-600" />
-              <span className="text-red-500 text-sm">
-                {errors?.name?.message}
-              </span>
-            </div>
-          )}
+          <ValidationErrorMsg message={errors?.name?.message} />
         </div>
         <div className="flex flex-col gap-1 w-full">
           <label
@@ -104,14 +97,7 @@ function SignUp() {
               },
             })}
           />
-          {errors?.email?.message && (
-            <div className="flex flex-row gap-2 items-center">
-              <RiErrorWarningFill className="text-lg text-red-600" />
-              <span className="text-red-500 text-sm">
-                {errors?.email?.message}
-              </span>
-            </div>
-          )}
+          <ValidationErrorMsg message={errors?.email?.message} />
         </div>
 
         <div className="flex flex-col gap-1 w-full">
@@ -134,14 +120,7 @@ function SignUp() {
               },
             })}
           />
-          {errors?.password?.message && (
-            <div className="flex flex-row gap-2 items-center">
-              <RiErrorWarningFill className="text-lg text-red-600" />
-              <span className="text-red-500 text-sm">
-                {errors?.password?.message}
-              </span>
-            </div>
-          )}
+          <ValidationErrorMsg message={errors?.password?.message} />
         </div>
         <div className="flex flex-col gap-1 w-full">
           <label
@@ -159,14 +138,7 @@ function SignUp() {
               required: "Re-enter above password to proceed",
             })}
           />
-          {errors?.confirmPassword?.message && (
-            <div className="flex flex-row gap-2 items-center">
-              <RiErrorWarningFill className="text-lg text-red-600" />
-              <span className="text-red-500 text-sm">
-                {errors?.confirmPassword?.message}
-              </span>
-            </div>
-          )}
+          <ValidationErrorMsg message={errors?.confirmPassword?.message} />
         </div>
         {successMessage && (
           <div className="flex flex-row gap-2 mt-4 items-center">
