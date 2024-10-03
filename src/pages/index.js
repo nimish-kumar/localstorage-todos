@@ -1,12 +1,10 @@
-import localFont from "next/font/local";
-import Tasks from "./tasks";
-
-export const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Home() {
-  return <Tasks />;
+  const router = useRouter();
+  useEffect(() => {
+    router.replace("/tasks");
+  }, []);
+  return <></>;
 }
