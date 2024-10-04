@@ -1,6 +1,8 @@
 import useDebounce from "@/hooks/useDebounce";
+import { CURRENT_ACTIVE_USER } from "@/utils/constants";
 import { useEffect, useState } from "react";
 import { FaTrash } from "react-icons/fa";
+import { useSelector } from "react-redux";
 import ValidationErrorMsg from "../ValidationErrorMsg";
 
 function InlineEdit({
@@ -12,8 +14,16 @@ function InlineEdit({
 }) {
   const [editable, setEditable] = useState(false);
   const [text, setText] = useState(value || "");
+  const todos = useSelector((state) => state.todos);
 
   const debouncedValue = useDebounce(text, 500);
+
+  useEffect(() => {
+    localStorage.setItem(
+      `tasks_${localStorage.getItem(CURRENT_ACTIVE_USER)}`,
+      JSON.stringify(todos)
+    );
+  }, [todos]);
 
   useEffect(() => {
     onChange && debouncedValue && onChange(debouncedValue);
@@ -40,7 +50,11 @@ function InlineEdit({
           className="outline-gray-300 p-4 w-full hover:bg-gray-100 rounded-md border border-gray-300"
         />
         <FaTrash
-          onClick={() => onDelete && onDelete()}
+          onClick={() => {
+            if (onDelete) {
+              onDelete();
+            }
+          }}
           className="text-3xl text-red-700 active:text-gray-500"
         />
       </div>
