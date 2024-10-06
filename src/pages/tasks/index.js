@@ -34,17 +34,6 @@ function Tasks() {
     );
   }, []);
 
-  // useEffect(() => {
-  //   // Update localstorage on update of redux store
-  //   if (!initialLoadRef.current && localStorage.getItem(CURRENT_ACTIVE_USER)) {
-  // localStorage.setItem(
-  //   `tasks_${localStorage.getItem(CURRENT_ACTIVE_USER)}`,
-  //   JSON.stringify(todos)
-  // );
-  //   }
-  //   initialLoadRef.current = false;
-  // }, [todos]);
-
   const router = useRouter();
   const {
     handleSubmit,

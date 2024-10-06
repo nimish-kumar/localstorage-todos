@@ -25,7 +25,7 @@ function InlineEdit({
     );
   }, [todos]);
 
-  useEffect(() => {
+  useEffect(() => { 
     onChange && debouncedValue && onChange(debouncedValue);
   }, [debouncedValue, onChange]);
 
